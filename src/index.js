@@ -3,11 +3,23 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+//cấu hình router
+import { BrowserRouter } from 'react-router-dom';
+//cấu hình redux
+import { applyMiddleware, createStore } from 'redux'
+import { Provider } from 'react-redux';
+import { rootReducer } from './redux/reducers/rootReducer'
+import reduxThunk from 'redux-thunk'
 
+
+const store = createStore(rootReducer,applyMiddleware(reduxThunk));
 ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
+  <BrowserRouter>
+    <Provider store={store}>
+      <App />
+    </Provider>
+  </BrowserRouter>
+  ,
   document.getElementById('root')
 );
 
