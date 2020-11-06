@@ -9,8 +9,7 @@ import { BrowserRouter } from 'react-router-dom';
 import { applyMiddleware, createStore } from 'redux'
 import { Provider } from 'react-redux';
 import { rootReducer } from './redux/reducers/rootReducer'
-import reduxThunk from 'redux-thunk'
-
+import reduxThunk from 'redux-thunk';
 
 const store = createStore(rootReducer,applyMiddleware(reduxThunk));
 ReactDOM.render(

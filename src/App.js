@@ -9,6 +9,9 @@ import DangNhap from './Pages/DangNhap';
 import Home from './Pages/Home';
 import DangKy from './Pages/DangKy';
 import DemoHOC from './HOC/DemoHOC';
+import TodoListRFC from './Pages/TodoList/TodoListRFC';
+import TodoList from './Pages/TodoList/TodoList';
+import ToDoListRedux from './Pages/TodoList/ToDoListRedux';
 
 function App() {
   return (
@@ -22,8 +25,11 @@ function App() {
         <Route exact path='/dangky' component={DangKy} />
         <Route exact path='/demohoc' component={DemoHOC} />
         <Route exact path='/home' component={Home} />
+        <Route exact path='/todolistrfc' component={TodoListRFC} />
+        <Route exact path='/todolistrcc' component={TodoList} />
+        <Route exact path='/todolistredux' component={ToDoListRedux} />
         <Route exact path='/' component={TrangChu} />
-        
+        <div></div>
       </Switch>
       {/* 
         <Route path='/lienhe'>
