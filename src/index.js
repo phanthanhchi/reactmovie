@@ -4,21 +4,21 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 //cấu hình router
-import { BrowserRouter } from 'react-router-dom';
+import { BrowserRouter, Route, Router } from 'react-router-dom';
 //cấu hình redux
 import { applyMiddleware, createStore } from 'redux'
 import { Provider } from 'react-redux';
 import { rootReducer } from './redux/reducers/rootReducer'
 import reduxThunk from 'redux-thunk'
-
+import {history} from './Util/History'
 
 const store = createStore(rootReducer,applyMiddleware(reduxThunk));
 ReactDOM.render(
-  <BrowserRouter>
+  <Router history={history}>
     <Provider store={store}>
       <App />
     </Provider>
-  </BrowserRouter>
+  </Router>
   ,
   document.getElementById('root')
 );

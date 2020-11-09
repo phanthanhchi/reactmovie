@@ -20,6 +20,7 @@ export default function DemoHOC() {
   };
   return (
     <div>
+      
       <div>
         <button
           data-toggle="modal"

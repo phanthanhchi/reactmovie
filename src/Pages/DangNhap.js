@@ -1,7 +1,10 @@
 import React,{useState} from 'react'
-
+import {useDispatch} from 'react-redux'
+import { dangNhapAction } from '../redux/actions/QuanLyNguoiDungAction';
 export default function DangNhap(props) {
 
+    const dispatch = useDispatch()
+    
     const [userLogin,setUserLogin] = useState({taiKhoan:'',matKhau:''})
     // console.log('props trang login', props);
     console.log(userLogin);
@@ -14,11 +17,12 @@ export default function DangNhap(props) {
     } 
     const handleSubmit = (e) => {
         e.preventDefault(); //Chặn sự kiện reload browser
-        if(userLogin.taiKhoan === 'cybersoft' && userLogin.matKhau==='cybersoft'){
-            //Chuyển về home
-            alert('Đăng nhập thành công !');
-            props.history.push('/trangchu');
-        }
+        dispatch(dangNhapAction(userLogin))
+        // if(userLogin.taiKhoan === 'cybersoft' && userLogin.matKhau==='cybersoft'){
+        //     //Chuyển về home
+        //     alert('Đăng nhập thành công !');
+        //     props.history.push('/trangchu');
+        // }
     }
     return (
         <form className="container" onSubmit={handleSubmit}>

@@ -1,18 +1,29 @@
 import { LAY_DANH_SACH_PHIM_ACTION } from "../const/QuanLyPhimConst";
 import Axios from "axios";
+import ChiTietPhim from "../../Pages/ChiTietPhim";
+
+// export const layDanhSachPhimApi = (dataPhim) => {
+//   return {
+//     type: LAY_DANH_SACH_PHIM_ACTION,
+//     dsPhim: dataPhim,
+//   };
+// };
 
 //action gọi api (không dispatch dũ liệu trực tiếp lên reducer)
 export const layDanhSachPhimApiAction = () => {
   return (dispatch) => {
     //action này trả về hàm có tham số dispatch
-    var promise = Axios({
+    let promise = Axios({
       url:
         "https://movie0706.cybersoft.edu.vn/api/QuanLyPhim/LayDanhSachPhim?maNhom=GP01",
       method: "GET",
     });
-    //thành cong lấy dữ liện trả về
     promise.then((res) => {
-      dispatch(layDanhSachPhimApi(res.data));
+      console.log("danh sách phim", res.data);
+      dispatch({
+        type: LAY_DANH_SACH_PHIM_ACTION,
+        dsPhim: res.data,
+      });
 
       //setDSPhim(res.data)
     });
@@ -24,9 +35,28 @@ export const layDanhSachPhimApiAction = () => {
 };
 
 //action dispatch reducer
-export const layDanhSachPhimApi = (dataPhim) => {
-  return {
-    type: LAY_DANH_SACH_PHIM_ACTION,
-    dsPhim: dataPhim,
-  };
+
+export const layChiTietPhimApiAction = async (maPhim) => {
+  
+    return async (dispatch) => {
+     try { 
+      //gọi api lấy dữ liệu chi tiết về phim
+      let result = await Axios({
+        url: `https://movie0706.cybersoft.edu.vn/api/QuanLyRap/LayThongTinLichChieuPhim?MaPhim=${maPhim}`,
+        method: "GET",
+      });
+      console.log("chi tiết phim", result.data);
+      dispatch({
+        type: 'LAY_CHI_TIET_PHIM',
+        chiTietPhim:result.data
+      })
+
+ } catch (err) {
+    console.log(err)
+  }
+
+
+    };
+ 
+
 };
