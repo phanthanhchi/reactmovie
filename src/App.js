@@ -33,7 +33,7 @@ function App() {
 
         <HomeTemplate exact path='/trangchu' Component={TrangChu} />
         <HomeTemplate exact path='/chitietphim/:maphim' Component={ChiTietPhim} />
-        <HomeTemplate exact path='/chitietphongve/:maLichChieu' Component={PhongVe} />
+        {/* <HomeTemplate exact path='/chitietphongve/:maLichChieu' Component={PhongVe} /> */}
 
         <Route exact path='/lienhe' component={LienHe} />
         <Route exact path='/demohoc' component={DemoHOC} />

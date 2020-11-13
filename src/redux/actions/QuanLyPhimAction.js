@@ -58,5 +58,23 @@ export const layChiTietPhimApiAction = async (maPhim) => {
 
     };
  
-
 };
+export const layThongTinPhongVeApiAction = async (maLichChieu) => {
+  return async (dispatch) => {
+    try {
+      const { data, status } = await Axios({
+        url: `https://movie0706.cybersoft.edu.vn/api/QuanLyDatVe/LayDanhSachPhongVe?MaLichChieu=${maLichChieu}`,
+                method:'GET'
+      })
+      console.log('datathong tin phòng vé', data)
+      if (status === 200)
+      {
+        dispatch({
+          type: 'THONG_TIN_PHONG_VE',
+          thongTinPhongVe:data
+        })}
+    } catch (err) {
+      console.log(err)
+    }
+  }
+}
